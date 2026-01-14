@@ -1,27 +1,87 @@
-<html>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Fancy Form</title>
-
-  <!-- You may add more stuff here -->
-  <link href="style.css" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Swap</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <div class="container">
+    <form onsubmit="return !1">
+      <div class="header">
+        <h1>Currency Swap</h1>
+        <p class="subtitle">Exchange currencies and tokens instantly</p>
+      </div>
+      
+      <div class="swap-container">
+        <!-- From Currency -->
+        <div class="currency-group from-group">
+          <label for="from-currency">From</label>
+          <div class="currency-input-wrapper">
+            <img id="from-icon" class="currency-icon" src="" alt="USD">
+            <select id="from-currency" aria-label="Select source currency">
+              <option value="USD" selected>USD</option>
+              <option value="EUR">EUR</option>
+              <option value="GBP">GBP</option>
+              <option value="JPY">JPY</option>
+            </select>
+          </div>
+          <input 
+            id="input-amount" 
+            type="number" 
+            min="0" 
+            step="0.01" 
+            placeholder="0.00"
+            aria-label="Amount to swap"
+          />
+        </div>
 
-  <!-- You may reorganise the whole HTML, as long as your form achieves the same effect. -->
-  <form onsubmit="return !1">
-    <h5>Swap</h5>
-    <label for="input-amount">Amount to send</label>
-    <input id="input-amount" />
+        <!-- Swap Button -->
+        <div class="swap-direction">
+          <button type="button" id="swap-direction" aria-label="Swap currencies">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
 
-    <label for="output-amount">Amount to receive</label>
-    <input id="output-amount" />
+        <!-- To Currency -->
+        <div class="currency-group to-group">
+          <label for="to-currency">To</label>
+          <div class="currency-input-wrapper">
+            <img id="to-icon" class="currency-icon" src="" alt="USD">
+            <select id="to-currency" aria-label="Select destination currency">
+              <option value="USD">USD</option>
+              <option value="EUR" selected>EUR</option>
+              <option value="GBP">GBP</option>
+              <option value="JPY">JPY</option>
+            </select>
+          </div>
+          <input 
+            id="output-amount" 
+            type="number" 
+            min="0" 
+            step="0.01" 
+            placeholder="0.00"
+            readonly
+            aria-label="Converted amount"
+          />
+        </div>
+      </div>
 
-    <button>CONFIRM SWAP</button>
-  </form>
-  <script src="script.js"></script>
+      <!-- Error Message -->
+      <div id="error-message" class="error-message" role="alert"></div>
+
+      <!-- Submit Button -->
+      <div class="form-actions">
+        <button type="submit" id="confirm-swap" class="submit-button">
+          CONFIRM SWAP
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <script type="module" src="script.js"></script>
 </body>
-
 </html>
